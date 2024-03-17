@@ -12,6 +12,12 @@ class Site(models.Model):
     updated = models.DateTimeField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    age = models.IntegerField()
+    favorite_fruit = models.CharField(max_length=100)
+    today_date = models.IntegerField()
 
     def __str__(self):
         """Return a string representation of the model."""

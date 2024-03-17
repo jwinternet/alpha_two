@@ -8,7 +8,7 @@
     {% extends "site_surveys/base.html" %}
 
     {% block content %}
-        <p>Add A New Site:</p>
+        <p>Add New Site:</p>
 
         <form action="{% url 'site_surveys:new_site' %}" method='post'>
             {% csrf_token %}

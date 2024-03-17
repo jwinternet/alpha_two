@@ -8,7 +8,30 @@
     {% extends "site_surveys/base.html" %}
 
     {% block page_header %}
-        <h1>{{ site.text }}</h1>
+        <h1>Site ID: {{ site.title.upper }}</h1>
+        <br>
+        <h3>Site Information: {{ site.text }}</h3>
+        <br>
+        <h3>Slug: {{ site.slug }}</h3>
+        <br>
+        <h3>Date Added: {{ site.date_added }}</h3>
+        <br>
+        <h3>Updated: {{ site.updated }}</h3>
+        <br>
+        <h3>Owner: {{ site.owner }}</h3>
+        <br>
+        <h3>First Name: {{ site.first_name }}</h3>
+        <br>
+        <h3>Last Name: {{ site.last_name }}</h3>
+        <br>
+        <h3>Email: {{ site.email }}</h3>
+        <br>
+        <h3>Age: {{ site.age }}</h3>
+        <br>
+        <h3>Favorite Fruit: {{ site.favorite_fruit.title }}</h3>
+        <br>
+        <h3>Today's Date: {{ site.today_date }}</h3>
+        <br>
     {% endblock page_header %}
 
     {% block content %}

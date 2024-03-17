@@ -30,7 +30,10 @@ def site(request, site_id):
         if site.owner != request.user:
             raise Http404
 
-        return render(request, "site_surveys/site.html", {"site": site})
+        context = {
+            "site": site
+        }
+        return render(request, "site_surveys/site.html", context)
 
     except:
         return redirect("site_surveys:sites")
