@@ -2,6 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage
 
 from .models import Site
 from .forms import SiteForm
@@ -16,7 +17,15 @@ def index(request):
 def sites(request):
     """Show all sites."""
     sites = Site.objects.filter(owner=request.user).order_by("date_added")
-    context = {"sites": sites}
+    # Pagination with 3 posts per page
+    paginator = Paginator(sites, 3)
+    page_number = request.GET.get("page", 1)
+    try:
+        site = paginator.page(page_number)
+    except EmptyPage:
+        # If page_number is out of range deliver last page of results
+        site = paginator.page(paginator.num_pages)
+    context = {"sites": site}
     return render(request, "site_surveys/sites.html", context)
 
 

@@ -6,16 +6,16 @@ from .models import Site
 
 INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 32)]
 FRUIT_CHOICES = [
-    ('orange', 'Oranges'),
-    ('cantaloupe', 'Cantaloupes'),
-    ('mango', 'Mangoes'),
-    ('honeydew', 'Honeydews'),
+    ("orange", "Oranges"),
+    ("cantaloupe", "Cantaloupes"),
+    ("mango", "Mangoes"),
+    ("honeydew", "Honeydews"),
 ]
 
 
 class SiteForm(forms.ModelForm):
     favorite_fruit = forms.CharField(
-        label='What is your favorite fruit?',
+        label="What is your favorite fruit?",
         widget=forms.Select(choices=FRUIT_CHOICES)
     )
     today_date = forms.IntegerField(

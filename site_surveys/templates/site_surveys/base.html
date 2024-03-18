@@ -32,7 +32,7 @@
 
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <span class="navbar-text me-2">Hello {{ user.username }}!.</span></li>
+                            <span class="navbar-text me-2">Hello {{ user.username.title }}!.</span></li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'accounts:register' %}">Register</a></li>
