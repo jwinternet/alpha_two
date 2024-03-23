@@ -4,7 +4,7 @@ from django import forms
 from .models import Site
 
 
-INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 32)]
+INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 99)]
 FRUIT_CHOICES = [
     ("orange", "Oranges"),
     ("cantaloupe", "Cantaloupes"),
@@ -14,12 +14,18 @@ FRUIT_CHOICES = [
 
 
 class SiteForm(forms.ModelForm):
-    favorite_fruit = forms.CharField(
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'style': 'width: 300px;'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'style': 'width: 300px;'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email', 'style': 'width: 300px;'}))
+    today_date = forms.DateField(widget=forms.SelectDateWidget)
+    favorite_fruit = forms.MultipleChoiceField(
         label="What is your favorite fruit?",
-        widget=forms.Select(choices=FRUIT_CHOICES)
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        choices=FRUIT_CHOICES,
     )
-    today_date = forms.IntegerField(
-        label="What is today's date?",
+    age = forms.IntegerField(
+        label="How old are you?",
         widget=forms.Select(choices=INTEGER_CHOICES)
     )
 

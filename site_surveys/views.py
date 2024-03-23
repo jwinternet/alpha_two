@@ -18,7 +18,7 @@ def sites(request):
     """Show all sites."""
     sites = Site.objects.filter(owner=request.user).order_by("date_added")
     # Pagination with 3 posts per page
-    paginator = Paginator(sites, 3)
+    paginator = Paginator(sites, 10)
     page_number = request.GET.get("page", 1)
     try:
         site = paginator.page(page_number)
@@ -34,7 +34,10 @@ def site(request, site_id):
     """Show a single site and all of its notes."""
     try:
         # site = Site.objects.get(id=site_id)
-        site = get_object_or_404(Site, id=site_id)
+        site = get_object_or_404(
+            Site,
+            id=site_id
+        )
         # Make sure the site belongs to the current user.
         if site.owner != request.user:
             raise Http404
