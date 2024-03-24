@@ -9,30 +9,47 @@
 
     {% block page_header %}
 
-        <h1>Site ID: {{ site.title.upper }}</h1>
-        <br>
-        <h4>Site Information: {{ site.text }}</h4>
-        <br>
-        <h3>Slug: {{ site.slug }}</h3>
-        <br>
-        <h3>Date Added: {{ site.date_added }}</h3>
-        <br>
-        <h3>Updated: {{ site.updated }}</h3>
-        <br>
-        <h3>Owner: {{ site.owner }}</h3>
-        <br>
-        <h3>First Name: {{ site.first_name }}</h3>
-        <br>
-        <h3>Last Name: {{ site.last_name }}</h3>
-        <br>
-        <h3>Email: {{ site.email }}</h3>
-        <br>
-        <h3>Age: {{ site.age }}</h3>
-        <br>
-        <h3>Favorite Fruit: {{ site.favorite_fruit.title }}</h3>
-        <br>
-        <h3>Today's Date: {{ site.today_date }}</h3>
-        <br>
+        <div class="container mt-3">
+          <h2>{{ site.title.upper }}</h2>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Site ID</th>
+                  <th>Site Information</th>
+                  <th>Slug</th>
+                  <th>Date Added</th>
+                  <th>Updated</th>
+                  <th>Owner</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Age</th>
+                  <th>Favorite Fruit</th>
+                  <th>Today's Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ site.title.upper }}</td>
+                  <td>{{ site.text }}</td>
+                  <td>{{ site.slug }}</td>
+                  <td>{{ site.date_added }}</td>
+                  <td>{{ site.updated }}</td>
+                  <td>{{ site.owner }}</td>
+                  <td>{{ site.first_name }}</td>
+                  <td>{{ site.last_name }}</td>
+                  <td>{{ site.email }}</td>
+                  <td>{{ site.age }}</td>
+                  <td>{{ site.favorite_fruit.title }}</td>
+                  <td>{{ site.today_date }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         <p>
             <a href="{% url 'site_surveys:edit_site' site.id %}">Edit Site</a>
         </p>

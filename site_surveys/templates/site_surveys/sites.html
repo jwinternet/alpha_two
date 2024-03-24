@@ -15,10 +15,16 @@
 
         <ul class="list-group border-bottom pb-2 mb-4">
             {% for site in sites %}
+
                 <li class="list-group-item border-0">
-                    <a href="{% url 'site_surveys:site' site.id %}">{{ site.title.upper }}</a>
-                    <p class="tags">Tags: {{ site.tags.all|join:", " }}</p>
+                    <div class="p-3 mb-4 bg-warning text-body border rounded-3">
+                        <div class="container py-1">
+                            <a href="{% url 'site_surveys:site' site.id %}">{{ site.title.upper }}</a>
+                            <p class="tags">Tags: {{ site.tags.all|join:", " }}</p>
+                        </div>
+                    </div>
                 </li>
+
             {% empty %}
                 <li class="list-group-item border-0">No sites have been added yet.</li>
             {% endfor %}
@@ -27,6 +33,7 @@
         <a href="{% url 'site_surveys:new_site' %}">Add New Site</a>
 
     {% include "site_surveys/pagination.html" with page=sites %}
+        <br>
 
     {% endblock content %}
 </body>
