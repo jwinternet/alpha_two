@@ -13,8 +13,8 @@ class Site(models.Model):
         # verbose_name="ISBN number of the book."
     )
     slug = models.SlugField(max_length=250)
-    date_added = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+    date_added = models.DateField(auto_now_add=True)
+    updated = models.DateField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     first_name = models.CharField(max_length=100)
@@ -22,7 +22,6 @@ class Site(models.Model):
     email = models.EmailField()
     age = models.IntegerField()
     favorite_fruit = models.CharField(max_length=100)
-    today_date = models.IntegerField()
 
     def __str__(self):
         """Return a string representation of the model."""

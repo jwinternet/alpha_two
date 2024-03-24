@@ -74,18 +74,21 @@ def new_site(request):
 @login_required
 def edit_site(request, site_id):
     """Edit an existing site."""
-    edit_site = Site.objects.get(id=site_id)
+    site = get_object_or_404(
+        Site,
+        id=site_id
+    )
 
     if request.method != "POST":
         # No data submitted; create a blank form.
-        form = SiteForm(instance=edit_site)
+        form = SiteForm(instance=site)
     else:
         # POST data submitted; process data.
-        form = SiteForm(instance=edit_site, data=request.POST)
+        form = SiteForm(instance=site, data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect("site_surveys:sites", site_id=edit_site)
+            return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site": edit_site, "form": form}
+    context = {"site": site, "form": form}
     return render(request, "site_surveys/edit_site.html", context)

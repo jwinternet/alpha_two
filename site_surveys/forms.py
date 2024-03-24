@@ -17,7 +17,16 @@ class SiteForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'style': 'width: 300px;'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'style': 'width: 300px;'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email', 'style': 'width: 300px;'}))
-    today_date = forms.DateField(widget=forms.SelectDateWidget)
+    # today_date = forms.DateField(
+    #     widget=forms.DateInput(
+    #         format='%Y-%m-%d',
+    #         attrs={
+    #             'class': 'form-control',
+    #             'placeholder': 'Select a date',
+    #             'type': 'date'
+    #         }
+    #     ),
+    # )
     favorite_fruit = forms.MultipleChoiceField(
         label="What is your favorite fruit?",
         required=False,
@@ -31,7 +40,7 @@ class SiteForm(forms.ModelForm):
 
     class Meta:
         model = Site
-        fields = ["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit", "today_date"]
+        fields = ["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"]
         labels = {
             "title": "Site ID - ",
             "text": "Text - ",
@@ -40,5 +49,4 @@ class SiteForm(forms.ModelForm):
             "email": "Email - ",
             "age": "Age - ",
             "favorite_fruit": "Fruit - ",
-            "today_date": "Today - "
         }
