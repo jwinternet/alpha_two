@@ -3,6 +3,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+from taggit.managers import TaggableManager
+
 
 class Site(models.Model):
     """A specific site location."""
@@ -22,6 +24,8 @@ class Site(models.Model):
     email = models.EmailField()
     age = models.IntegerField()
     favorite_fruit = models.CharField(max_length=100)
+
+    tags = TaggableManager()
 
     def __str__(self):
         """Return a string representation of the model."""

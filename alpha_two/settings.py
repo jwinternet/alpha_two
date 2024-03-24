@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     # Third party apps.
     "django_bootstrap5",
+    "taggit",
 
     # Default Django apps.
     "django.contrib.admin",

@@ -17,6 +17,7 @@
             {% for site in sites %}
                 <li class="list-group-item border-0">
                     <a href="{% url 'site_surveys:site' site.id %}">{{ site.title.upper }}</a>
+                    <p class="tags">Tags: {{ site.tags.all|join:", " }}</p>
                 </li>
             {% empty %}
                 <li class="list-group-item border-0">No sites have been added yet.</li>

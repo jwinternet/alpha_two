@@ -24,7 +24,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                    <a class="nav-link" href="{% url 'site_surveys:sites' %}">Sites</a></li>
+                        <a class="nav-link" href="{% url 'site_surveys:sites' %}">Sites</a>
+                    </li>
                 </ul> <!-- End of links on left side of navbar -->
 
                 <!-- Account-related links -->
@@ -32,12 +33,15 @@
 
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <span class="navbar-text me-2">{{ user.username.title }}</span></li>
+                            <span class="navbar-text me-2">{{ user.username.title }}</span>
+                        </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a></li>
+                            <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a></li>
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a>
+                        </li>
                     {% endif %}
 
                 </ul> <!-- End of account-related links -->
@@ -45,7 +49,8 @@
                 {% if user.is_authenticated %}
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
-                        <button name='submit' class='btn btn-outline-secondary btn-sm' data-toggle="tooltip" data-placement="top" title="Tooltip on top">Log Out</button>
+                        <button name='submit' class='btn btn-outline-secondary btn-sm' data-toggle="tooltip"
+                                data-placement="top" title="Tooltip on top">Log Out</button>
                     </form>
                 {% endif %}
 
