@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Edit Site</title>
 </head>
 <body>
     {% extends "site_surveys/base.html" %}
 
     {% block content %}
 
-        <form action="{% url 'accounts:register' %}" method='post'>
+        <p>Edit Site:</p>
+
+        <form action="{% url 'site_surveys:edit_site' site.id %}" method='post'>
             {% csrf_token %}
             {{ form.as_div }}
-
-            <button name="submit" data-toggle="tooltip" data-placement="top" title="Tooltip on top">Register</button>
+            <button name="submit">Save Changes</button>
         </form>
 
     {% endblock content %}

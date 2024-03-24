@@ -45,7 +45,7 @@
                 {% if user.is_authenticated %}
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
-                        <button name='submit' class='btn btn-outline-secondary btn-sm'>Log Out</button>
+                        <button name='submit' class='btn btn-outline-secondary btn-sm' data-toggle="tooltip" data-placement="top" title="Tooltip on top">Log Out</button>
                     </form>
                 {% endif %}
 

@@ -69,3 +69,23 @@ def new_site(request):
     # Display a blank or invalid form.
     context = {"form": form}
     return render(request, "site_surveys/new_site.html", context)
+
+
+@login_required
+def edit_site(request, site_id):
+    """Edit an existing site."""
+    edit_site = Site.objects.get(id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        form = SiteForm(instance=edit_site)
+    else:
+        # POST data submitted; process data.
+        form = SiteForm(instance=edit_site, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("site_surveys:sites", site_id=edit_site)
+
+    # Display a blank or invalid form.
+    context = {"site": edit_site, "form": form}
+    return render(request, "site_surveys/edit_site.html", context)
