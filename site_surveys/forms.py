@@ -5,12 +5,6 @@ from .models import Site
 
 
 INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 99)]
-FRUIT_CHOICES = [
-    ("orange", "Oranges"),
-    ("cantaloupe", "Cantaloupes"),
-    ("mango", "Mangoes"),
-    ("honeydew", "Honeydews"),
-]
 
 
 class SiteForm(forms.ModelForm):
@@ -41,13 +35,12 @@ class SiteForm(forms.ModelForm):
         label="Age: ",
         widget=forms.Select(choices=INTEGER_CHOICES)
     )
-    favorite_fruit = forms.MultipleChoiceField(
-        label="What is your favorite fruit?",
+    site_type = forms.CharField(
+        label="Site Type: ",
         required=False,
-        widget=forms.CheckboxSelectMultiple,
-        choices=FRUIT_CHOICES,
+        widget=forms.Select(choices=Site.SITE_TYPES),
     )
 
     class Meta:
         model = Site
-        fields = ["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"]
+        fields = ["title", "text", "first_name", "last_name", "email", "age", "site_type"]

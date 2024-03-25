@@ -23,8 +23,17 @@ class Site(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
     age = models.IntegerField()
-    favorite_fruit = models.CharField(max_length=100)
-
+    SITE_TYPES = [
+        ("Wawa", "Wawa"),
+        ("Sheetz", "Sheetz"),
+        ("Thorntons", "Thorntons"),
+        ("AT&T", "AT&T"),
+        ("Verizon", "Verizon")
+    ]
+    site_type = models.CharField(
+        choices=SITE_TYPES,
+        max_length=100
+    )
     tags = TaggableManager()
 
     class Meta:

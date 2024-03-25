@@ -1,7 +1,7 @@
 #!/usr/bin/python3.12
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import Http404, HttpResponse
+from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 import csv
@@ -18,10 +18,10 @@ def index(request):
 @login_required
 def sites(request):
     """Show all sites."""
-    sites = Site.objects.filter(owner=request.user).order_by("date_added")
+    sites = Site.objects.order_by("date_added")
 
     # Pagination with 3 posts per page
-    paginator = Paginator(sites, 10)
+    paginator = Paginator(sites, 5)
     page_number = request.GET.get("page", 1)
     try:
         site = paginator.page(page_number)
@@ -40,13 +40,10 @@ def site(request, site_id):
     """Show a single site and all of its notes."""
     try:
         # site = Site.objects.get(id=site_id)
-        site = get_object_or_404(
-            Site,
-            id=site_id
-        )
-        # Make sure the site belongs to the current user.
-        if site.owner != request.user:
-            raise Http404
+        site = get_object_or_404(Site, id=site_id)
+        # # Make sure the site belongs to the current user.
+        # if site.owner != request.user:
+        #     raise Http404
 
         context = {
             "site": site
@@ -80,10 +77,7 @@ def new_site(request):
 @login_required
 def edit_site(request, site_id):
     """Edit an existing site."""
-    site = get_object_or_404(
-        Site,
-        id=site_id
-    )
+    site = get_object_or_404(Site, id=site_id)
 
     if request.method != "POST":
         # No data submitted; create a blank form.
@@ -107,7 +101,7 @@ def export_all_sites(request):
     export_sites = Site.objects.all()
 
     writer = csv.writer(response)
-    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"])
+    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
 
     for export_site in export_sites:
         writer.writerow([
@@ -117,7 +111,7 @@ def export_all_sites(request):
             export_site.last_name,
             export_site.email,
             export_site.age,
-            export_site.favorite_fruit,
+            export_site.site_type,
         ])
     return response
 
@@ -126,13 +120,10 @@ def export_all_sites(request):
 def export_site(request, site_id):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="export_site.csv"'
-    export_site = get_object_or_404(
-        Site,
-        id=site_id
-    )
+    export_site = get_object_or_404(Site, id=site_id)
 
     writer = csv.writer(response)
-    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"])
+    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
 
     writer.writerow([
         export_site.title,
@@ -141,6 +132,6 @@ def export_site(request, site_id):
         export_site.last_name,
         export_site.email,
         export_site.age,
-        export_site.favorite_fruit,
+        export_site.site_type,
     ])
     return response
