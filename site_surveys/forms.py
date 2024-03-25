@@ -14,39 +14,37 @@ FRUIT_CHOICES = [
 
 
 class SiteForm(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'style': 'width: 300px;'}))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'style': 'width: 300px;'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email', 'style': 'width: 300px;'}))
-    # today_date = forms.DateField(
-    #     widget=forms.DateInput(
-    #         format='%Y-%m-%d',
-    #         attrs={
-    #             'class': 'form-control',
-    #             'placeholder': 'Select a date',
-    #             'type': 'date'
-    #         }
-    #     ),
-    # )
+    title = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'Site ID', 'style': 'width: 300px;'})
+    )
+    text = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'Enter information here.', 'style': 'width: 300px;'})
+    )
+    first_name = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'First Name', 'style': 'width: 300px;'})
+    )
+    last_name = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'style': 'width: 300px;'})
+    )
+    email = forms.EmailField(
+        label="",
+        widget=forms.EmailInput(attrs={'placeholder': 'Email', 'style': 'width: 300px;'})
+    )
+    age = forms.IntegerField(
+        label="Age: ",
+        widget=forms.Select(choices=INTEGER_CHOICES)
+    )
     favorite_fruit = forms.MultipleChoiceField(
         label="What is your favorite fruit?",
         required=False,
         widget=forms.CheckboxSelectMultiple,
         choices=FRUIT_CHOICES,
     )
-    age = forms.IntegerField(
-        label="How old are you?",
-        widget=forms.Select(choices=INTEGER_CHOICES)
-    )
 
     class Meta:
         model = Site
         fields = ["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"]
-        labels = {
-            "title": "Site ID - ",
-            "text": "Text - ",
-            "first_name": "First Name - ",
-            "last_name": "Last Name - ",
-            "email": "Email - ",
-            "age": "Age - ",
-            "favorite_fruit": "Fruit - ",
-        }

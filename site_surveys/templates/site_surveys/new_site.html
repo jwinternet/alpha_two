@@ -11,11 +11,15 @@
 
         <p>Add New Site:</p>
 
-        <form action="{% url 'site_surveys:new_site' %}" method='post'>
-            {% csrf_token %}
-            {{ form.as_div }}
-            <button name="submit">Add Site</button>
-        </form>
+        <div class="p-3 mb-4 bg-warning text-body border rounded-3">
+            <div class="container py-1">
+                <form action="{% url 'site_surveys:new_site' %}" method='post'>
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                    <button name="submit">Add Site</button>
+                </form>
+            </div>
+        </div>
 
     {% endblock content %}
 </body>

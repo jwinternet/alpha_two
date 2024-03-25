@@ -18,7 +18,6 @@
                 <tr>
                   <th>Site ID</th>
                   <th>Site Information</th>
-                  <th>Slug</th>
                   <th>Date Added</th>
                   <th>Updated</th>
                   <th>Owner</th>
@@ -27,14 +26,12 @@
                   <th>Email</th>
                   <th>Age</th>
                   <th>Favorite Fruit</th>
-                  <th>Today's Date</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>{{ site.title.upper }}</td>
                   <td>{{ site.text }}</td>
-                  <td>{{ site.slug }}</td>
                   <td>{{ site.date_added }}</td>
                   <td>{{ site.updated }}</td>
                   <td>{{ site.owner }}</td>
@@ -43,7 +40,6 @@
                   <td>{{ site.email }}</td>
                   <td>{{ site.age }}</td>
                   <td>{{ site.favorite_fruit.title }}</td>
-                  <td>{{ site.today_date }}</td>
                 </tr>
               </tbody>
             </table>
