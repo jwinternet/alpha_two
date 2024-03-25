@@ -17,5 +17,6 @@ urlpatterns = [
     path("new_site/", views.new_site, name="new_site"),
     # Page for editing an entry.
     path("edit_site/<int:site_id>/", views.edit_site, name="edit_site"),
-    path('export_csv', views.export_csv, name='exportcsv')
+    path('export_all_sites/', views.export_all_sites, name='export_all_sites'),
+    path('export_site/<int:site_id>/', views.export_site, name='export_site')
 ]

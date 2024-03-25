@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+    <nav class="navbar navbar-expand-md navbar-light mb-4 border" style="background-color: #8a8fa6;">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'site_surveys:index' %}">Site Surveys</a>
 
@@ -50,7 +50,7 @@
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
                         <button name='submit' class='btn btn-outline-secondary btn-sm' data-toggle="tooltip"
-                                data-placement="top" title="Tooltip on top">Log Out</button>
+                                data-placement="top" title="Click to log out of site.">Log Out</button>
                     </form>
                 {% endif %}
 

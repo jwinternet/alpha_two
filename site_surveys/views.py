@@ -101,9 +101,9 @@ def edit_site(request, site_id):
 
 
 @login_required
-def export_csv(request):
+def export_all_sites(request):
     response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="exportcsv.csv"'
+    response['Content-Disposition'] = 'attachment; filename="export_all_sites.csv"'
     export_sites = Site.objects.all()
 
     writer = csv.writer(response)
@@ -119,4 +119,28 @@ def export_csv(request):
             export_site.age,
             export_site.favorite_fruit,
         ])
+    return response
+
+
+@login_required
+def export_site(request, site_id):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="export_site.csv"'
+    export_site = get_object_or_404(
+        Site,
+        id=site_id
+    )
+
+    writer = csv.writer(response)
+    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"])
+
+    writer.writerow([
+        export_site.title,
+        export_site.text,
+        export_site.first_name,
+        export_site.last_name,
+        export_site.email,
+        export_site.age,
+        export_site.favorite_fruit,
+    ])
     return response
