@@ -16,7 +16,10 @@ FRUIT_CHOICES = [
 class SiteForm(forms.ModelForm):
     title = forms.CharField(
         label="",
-        widget=forms.TextInput(attrs={'placeholder': 'Site ID', 'style': 'width: 300px;'})
+        required=True,
+        min_length=4,
+        max_length=4,
+        widget=forms.TextInput(attrs={'placeholder': 'Site ID', 'style': 'width: 300px;'}),
     )
     text = forms.CharField(
         label="",

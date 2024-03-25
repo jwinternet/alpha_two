@@ -27,6 +27,9 @@ class Site(models.Model):
 
     tags = TaggableManager()
 
+    class Meta:
+        ordering = ['-title']
+
     def __str__(self):
         """Return a string representation of the model."""
         return self.title
