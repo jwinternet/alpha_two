@@ -1,8 +1,10 @@
 #!/usr/bin/python3.12
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+import csv
 
 from .models import Site
 from .forms import SiteForm
@@ -96,3 +98,25 @@ def edit_site(request, site_id):
     # Display a blank or invalid form.
     context = {"site": site, "form": form}
     return render(request, "site_surveys/edit_site.html", context)
+
+
+@login_required
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="exportcsv.csv"'
+    export_sites = Site.objects.all()
+
+    writer = csv.writer(response)
+    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "favorite_fruit"])
+
+    for export_site in export_sites:
+        writer.writerow([
+            export_site.title,
+            export_site.text,
+            export_site.first_name,
+            export_site.last_name,
+            export_site.email,
+            export_site.age,
+            export_site.favorite_fruit,
+        ])
+    return response

@@ -29,8 +29,9 @@
                 <li class="list-group-item border-0">No sites have been added yet.</li>
             {% endfor %}
         </ul>
-
-        <a href="{% url 'site_surveys:new_site' %}">Add New Site</a>
+        <div><a href="{% url 'site_surveys:exportcsv' %}">
+            <button type="button" class="button">Export To CSV</button></a></div>
+        <br><a href="{% url 'site_surveys:new_site' %}">Add New Site</a>
 
     {% include "site_surveys/pagination.html" with page=sites %}
         <br>
