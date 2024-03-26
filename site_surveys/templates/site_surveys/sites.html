@@ -19,7 +19,8 @@
                 <li class="list-group-item border-0">
                     <div class="p-3 mb-1 bg-info text-bg-body border rounded-5">
                         <div class="container">
-                            <a href="{% url 'site_surveys:site' site.id %}"><strong>{{ site.title.upper }}</strong></a>
+                            <a href="{% url 'site_surveys:site' site.id %}"><h3>{{ site.title.upper }}</h3></a>
+                            <div>Last Updated: {{ site.updated }}</div>
                             <p class="tags"><strong>Tags: {{ site.tags.all|join:", " }}</strong></p>
                         </div>
                     </div>

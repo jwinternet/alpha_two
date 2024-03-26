@@ -11,8 +11,6 @@ class Site(models.Model):
 
     title = models.CharField(
         max_length=4,
-        # help_text="The 4-digit ID of the specific location.",
-        # verbose_name="ISBN number of the book."
     )
     slug = models.SlugField(max_length=250)
     date_added = models.DateField(auto_now_add=True)

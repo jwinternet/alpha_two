@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-import csv
+from csv import writer
 
 from .models import Site
 from .forms import SiteForm
@@ -100,11 +100,11 @@ def export_all_sites(request):
     response['Content-Disposition'] = 'attachment; filename="export_all_sites.csv"'
     export_sites = Site.objects.all()
 
-    writer = csv.writer(response)
-    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer = writer(response)
+    my_writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
 
     for export_site in export_sites:
-        writer.writerow([
+        my_writer.writerow([
             export_site.title,
             export_site.text,
             export_site.first_name,
@@ -122,10 +122,10 @@ def export_site(request, site_id):
     response['Content-Disposition'] = 'attachment; filename="export_site.csv"'
     export_site = get_object_or_404(Site, id=site_id)
 
-    writer = csv.writer(response)
-    writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer = writer(response)
+    my_writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
 
-    writer.writerow([
+    my_writer.writerow([
         export_site.title,
         export_site.text,
         export_site.first_name,
