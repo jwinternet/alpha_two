@@ -15,7 +15,7 @@ class Site(models.Model):
     slug = models.SlugField(max_length=250)
     date_added = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     text = models.TextField()
     street_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
@@ -24,7 +24,7 @@ class Site(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()
-    age = models.IntegerField()
+    age = models.IntegerField(null=True)
     SITE_TYPES = [
         ("Wawa", "Wawa"),
         ("Sheetz", "Sheetz"),
@@ -35,6 +35,10 @@ class Site(models.Model):
     site_type = models.CharField(
         choices=SITE_TYPES,
         max_length=100
+    )
+    file_upload = models.FileField(
+        upload_to='site_surveys/media/%Y/%m/%d/',
+        blank=True
     )
     tags = TaggableManager()
 

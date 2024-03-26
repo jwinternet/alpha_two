@@ -7,16 +7,19 @@
 <body>
     {% extends "site_surveys/base.html" %}
 
-    {% block content %}
+    {% block page_header %}
+        <h1>Add New Site</h1>
+    {% endblock page_header %}
 
-        <p>Add New Site:</p>
+    {% block content %}
 
         <div class="p-3 mb-4 bg-warning text-body border rounded-3">
             <div class="container py-1">
-                <form action="{% url 'site_surveys:new_site' %}" method='post'>
+                <form action="{% url 'site_surveys:new_site' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ site_form.as_p }}
-                    {{ address_form.as_p }}
+                    {{ site_form.as_div }}
+                    {{ address_form.as_div }}
+                    {{ file_upload_form.as_div }}
                     <button name="submit">Add Site</button>
                 </form>
             </div>

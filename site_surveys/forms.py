@@ -67,3 +67,9 @@ class AddressForm(forms.ModelForm):
     class Meta:
         model = Site
         fields = ["street_address", "city", "state", "zip_code"]
+
+
+class FileUploadForm(forms.ModelForm):
+    class Meta:
+        model = Site
+        fields = ["file_upload"]

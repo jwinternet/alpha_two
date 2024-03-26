@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from csv import writer
 
 from .models import Site
-from .forms import SiteForm, AddressForm
+from .forms import SiteForm, AddressForm, FileUploadForm
 
 
 def index(request):
@@ -61,21 +61,26 @@ def new_site(request):
         # No data submitted; create a blank form.
         site_form = SiteForm()
         address_form = AddressForm()
+        file_upload_form = FileUploadForm()
     else:
         # POST data submitted; process data.
         site_form = SiteForm(data=request.POST)
         address_form = AddressForm(data=request.POST)
-        if site_form.is_valid() and address_form.is_valid():
+        file_upload_form = FileUploadForm(data=request.POST)
+        if site_form.is_valid() and address_form.is_valid() and file_upload_form.is_valid():
             new_site = site_form.save(commit=False)
             new_site.owner = request.user
             new_site.save()
             address_site = address_form.save(commit=False)
             address_site.owner = request.user
             address_site.save()
+            file_site = file_upload_form.save(commit=False)
+            file_site.owner = request.user
+            file_site.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site_form": site_form, "address_form": address_form}
+    context = {"site_form": site_form, "address_form": address_form, "file_upload_form": file_upload_form}
     return render(request, "site_surveys/new_site.html", context)
 
 
@@ -88,17 +93,20 @@ def edit_site(request, site_id):
         # No data submitted; create a blank form.
         site_form = SiteForm(instance=site)
         address_form = AddressForm(instance=site)
+        file_upload_form = FileUploadForm(instance=site)
     else:
         # POST data submitted; process data.
         site_form = SiteForm(instance=site, data=request.POST)
         address_form = AddressForm(instance=site, data=request.POST)
-        if site_form.is_valid() and address_form.is_valid():
+        file_upload_form = FileUploadForm(instance=site, data=request.POST)
+        if site_form.is_valid() and address_form.is_valid() and file_upload_form.is_valid():
             site_form.save()
             address_form.save()
+            file_upload_form.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site": site, "site_form": site_form, "address_form": address_form}
+    context = {"site": site, "site_form": site_form, "address_form": address_form, "file_upload_form": file_upload_form}
     return render(request, "site_surveys/edit_site.html", context)
 
 
