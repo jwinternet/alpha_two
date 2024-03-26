@@ -47,11 +47,23 @@ class SiteForm(forms.ModelForm):
 
 
 class AddressForm(forms.ModelForm):
-    address = forms.CharField(
+    street_address = forms.CharField(
         label="",
-        widget=forms.TextInput(attrs={'placeholder': 'Address', 'style': 'width: 300px;'})
+        widget=forms.TextInput(attrs={'placeholder': 'Street Address', 'style': 'width: 300px;'})
+    )
+    city = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'City', 'style': 'width: 300px;'})
+    )
+    state = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'State', 'style': 'width: 300px;'})
+    )
+    zip_code = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'ZIP Code', 'style': 'width: 300px;'})
     )
 
     class Meta:
         model = Site
-        fields = ["address"]
+        fields = ["street_address", "city", "state", "zip_code"]

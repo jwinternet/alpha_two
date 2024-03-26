@@ -21,7 +21,7 @@ def sites(request):
     sites = Site.objects.order_by("date_added")
 
     # Pagination with 3 posts per page
-    paginator = Paginator(sites, 5)
+    paginator = Paginator(sites, 10)
     page_number = request.GET.get("page", 1)
     try:
         site = paginator.page(page_number)
@@ -109,13 +109,16 @@ def export_all_sites(request):
     export_sites = Site.objects.all()
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "address", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "text", "street_address", "city", "state", "zip_code", "first_name", "last_name", "email", "age", "site_type"])
 
     for export_site in export_sites:
         my_writer.writerow([
             export_site.title,
             export_site.text,
-            export_site.address,
+            export_site.street_address,
+            export_site.city,
+            export_site.state,
+            export_site.zip_code,
             export_site.first_name,
             export_site.last_name,
             export_site.email,
@@ -132,12 +135,15 @@ def export_site(request, site_id):
     export_site = get_object_or_404(Site, id=site_id)
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "address", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "text", "street_address", "city", "state", "zip_code", "first_name", "last_name", "email", "age", "site_type"])
 
     my_writer.writerow([
         export_site.title,
         export_site.text,
-        export_site.address,
+        export_site.street_address,
+        export_site.city,
+        export_site.state,
+        export_site.zip_code,
         export_site.first_name,
         export_site.last_name,
         export_site.email,
