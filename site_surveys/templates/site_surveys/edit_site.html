@@ -13,7 +13,8 @@
 
         <form action="{% url 'site_surveys:edit_site' site.id %}" method='post'>
             {% csrf_token %}
-            {{ form.as_div }}
+            {{ site_form.as_div }}
+            {{ address_form.as_div }}
             <button name="submit">Save Changes</button>
         </form>
 

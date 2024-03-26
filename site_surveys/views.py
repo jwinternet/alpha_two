@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from csv import writer
 
 from .models import Site
-from .forms import SiteForm
+from .forms import SiteForm, AddressForm
 
 
 def index(request):
@@ -59,18 +59,23 @@ def new_site(request):
     """Add a new site."""
     if request.method != "POST":
         # No data submitted; create a blank form.
-        form = SiteForm()
+        site_form = SiteForm()
+        address_form = AddressForm()
     else:
         # POST data submitted; process data.
-        form = SiteForm(data=request.POST)
-        if form.is_valid():
-            new_site = form.save(commit=False)
+        site_form = SiteForm(data=request.POST)
+        address_form = AddressForm(data=request.POST)
+        if site_form.is_valid() and address_form.is_valid():
+            new_site = site_form.save(commit=False)
             new_site.owner = request.user
             new_site.save()
+            address_site = address_form.save(commit=False)
+            address_site.owner = request.user
+            address_site.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"form": form}
+    context = {"site_form": site_form, "address_form": address_form}
     return render(request, "site_surveys/new_site.html", context)
 
 
@@ -81,16 +86,19 @@ def edit_site(request, site_id):
 
     if request.method != "POST":
         # No data submitted; create a blank form.
-        form = SiteForm(instance=site)
+        site_form = SiteForm(instance=site)
+        address_form = AddressForm(instance=site)
     else:
         # POST data submitted; process data.
-        form = SiteForm(instance=site, data=request.POST)
-        if form.is_valid():
-            form.save()
+        site_form = SiteForm(instance=site, data=request.POST)
+        address_form = AddressForm(instance=site, data=request.POST)
+        if site_form.is_valid() and address_form.is_valid():
+            site_form.save()
+            address_form.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site": site, "form": form}
+    context = {"site": site, "site_form": site_form, "address_form": address_form}
     return render(request, "site_surveys/edit_site.html", context)
 
 
@@ -101,12 +109,13 @@ def export_all_sites(request):
     export_sites = Site.objects.all()
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "text", "address", "first_name", "last_name", "email", "age", "site_type"])
 
     for export_site in export_sites:
         my_writer.writerow([
             export_site.title,
             export_site.text,
+            export_site.address,
             export_site.first_name,
             export_site.last_name,
             export_site.email,
@@ -123,11 +132,12 @@ def export_site(request, site_id):
     export_site = get_object_or_404(Site, id=site_id)
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "text", "address", "first_name", "last_name", "email", "age", "site_type"])
 
     my_writer.writerow([
         export_site.title,
         export_site.text,
+        export_site.address,
         export_site.first_name,
         export_site.last_name,
         export_site.email,

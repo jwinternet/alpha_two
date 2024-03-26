@@ -17,6 +17,7 @@ class Site(models.Model):
     updated = models.DateField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+    address = models.CharField(max_length=100)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.EmailField()

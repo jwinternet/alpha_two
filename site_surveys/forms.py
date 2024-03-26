@@ -44,3 +44,14 @@ class SiteForm(forms.ModelForm):
     class Meta:
         model = Site
         fields = ["title", "text", "first_name", "last_name", "email", "age", "site_type"]
+
+
+class AddressForm(forms.ModelForm):
+    address = forms.CharField(
+        label="",
+        widget=forms.TextInput(attrs={'placeholder': 'Address', 'style': 'width: 300px;'})
+    )
+
+    class Meta:
+        model = Site
+        fields = ["address"]
