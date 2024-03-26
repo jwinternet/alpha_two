@@ -153,9 +153,16 @@ def export_site(request, site_id):
     return response
 
 
+@login_required
 def useful_links(request):
     return render(request, "site_surveys/useful_links.html")
 
 
+@login_required
 def documentation(request):
     return render(request, "site_surveys/documentation.html")
+
+
+@login_required
+def contacts(request):
+    return render(request, "site_surveys/contacts.html")
