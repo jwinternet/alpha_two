@@ -151,3 +151,11 @@ def export_site(request, site_id):
         export_site.site_type,
     ])
     return response
+
+
+def useful_links(request):
+    return render(request, "site_surveys/useful_links.html")
+
+
+def documentation(request):
+    return render(request, "site_surveys/documentation.html")
