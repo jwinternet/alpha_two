@@ -4,7 +4,7 @@ from django import forms
 from .models import Site
 
 
-INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 99)]
+# INTEGER_CHOICES = [tuple([x, x]) for x in range(1, 99)]
 
 
 class SiteForm(forms.ModelForm):
@@ -14,10 +14,6 @@ class SiteForm(forms.ModelForm):
         min_length=4,
         max_length=4,
         widget=forms.TextInput(attrs={'placeholder': 'Site ID', 'style': 'width: 300px;'}),
-    )
-    text = forms.CharField(
-        label="",
-        widget=forms.TextInput(attrs={'placeholder': 'Enter information here.', 'style': 'width: 300px;'})
     )
     first_name = forms.CharField(
         label="",
@@ -31,22 +27,6 @@ class SiteForm(forms.ModelForm):
         label="",
         widget=forms.EmailInput(attrs={'placeholder': 'Email', 'style': 'width: 300px;'})
     )
-    age = forms.IntegerField(
-        label="Age: ",
-        widget=forms.Select(choices=INTEGER_CHOICES)
-    )
-    site_type = forms.CharField(
-        label="Site Type: ",
-        required=False,
-        widget=forms.Select(choices=Site.SITE_TYPES),
-    )
-
-    class Meta:
-        model = Site
-        fields = ["title", "text", "first_name", "last_name", "email", "age", "site_type"]
-
-
-class AddressForm(forms.ModelForm):
     street_address = forms.CharField(
         label="",
         widget=forms.TextInput(attrs={'placeholder': 'Street Address', 'style': 'width: 300px;'})
@@ -63,13 +43,30 @@ class AddressForm(forms.ModelForm):
         label="",
         widget=forms.TextInput(attrs={'placeholder': 'ZIP Code', 'style': 'width: 300px;'})
     )
+    site_type = forms.CharField(
+        label="Site Type: ",
+        required=False,
+        widget=forms.Select(choices=Site.SITE_TYPES),
+    )
 
     class Meta:
         model = Site
-        fields = ["street_address", "city", "state", "zip_code"]
+        fields = ["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"]
 
 
-class FileUploadForm(forms.ModelForm):
+# class FileUploadForm(forms.ModelForm):
+#     class Meta:
+#         model = Site
+#         fields = ["file_upload"]
+
+
+class PhotoForm(forms.ModelForm):
+    front = forms.CharField(
+        label="Front: ",
+        required=False,
+        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+    )
+
     class Meta:
         model = Site
-        fields = ["file_upload"]
+        fields = ["front"]

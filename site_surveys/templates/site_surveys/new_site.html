@@ -18,8 +18,6 @@
                 <form action="{% url 'site_surveys:new_site' %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ site_form.as_div }}
-                    {{ address_form.as_div }}
-                    {{ file_upload_form.as_div }}
                     <button name="submit">Add Site</button>
                 </form>
             </div>

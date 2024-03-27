@@ -9,6 +9,7 @@ from taggit.managers import TaggableManager
 class Site(models.Model):
     """A specific site location."""
 
+    # General Site Information
     title = models.CharField(
         max_length=4,
     )
@@ -16,15 +17,13 @@ class Site(models.Model):
     date_added = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    text = models.TextField()
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
     street_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=2)
     zip_code = models.CharField(max_length=5)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    email = models.EmailField()
-    age = models.IntegerField(null=True)
     SITE_TYPES = [
         ("Wawa", "Wawa"),
         ("Sheetz", "Sheetz"),
@@ -36,10 +35,20 @@ class Site(models.Model):
         choices=SITE_TYPES,
         max_length=100
     )
-    file_upload = models.FileField(
-        upload_to='site_surveys/media/%Y/%m/%d/',
-        blank=True
+    PHOTO_CHOICES = [
+        ("Yes", "Yes"),
+        ("No", "No")
+    ]
+    # Photo Information
+    front = models.CharField(
+        choices=PHOTO_CHOICES,
+        max_length=4,
     )
+
+    # file_upload = models.FileField(
+    #     upload_to='site_surveys/media/%Y/%m/%d/',
+    #     blank=True
+    # )
     tags = TaggableManager()
 
     class Meta:

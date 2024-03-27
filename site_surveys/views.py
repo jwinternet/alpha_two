@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from csv import writer
 
 from .models import Site
-from .forms import SiteForm, AddressForm, FileUploadForm
+from .forms import SiteForm, PhotoForm
 
 
 def index(request):
@@ -60,27 +60,17 @@ def new_site(request):
     if request.method != "POST":
         # No data submitted; create a blank form.
         site_form = SiteForm()
-        address_form = AddressForm()
-        file_upload_form = FileUploadForm()
     else:
         # POST data submitted; process data.
         site_form = SiteForm(data=request.POST)
-        address_form = AddressForm(data=request.POST)
-        file_upload_form = FileUploadForm(data=request.POST)
-        if site_form.is_valid() and address_form.is_valid() and file_upload_form.is_valid():
+        if site_form.is_valid():
             new_site = site_form.save(commit=False)
             new_site.owner = request.user
             new_site.save()
-            address_site = address_form.save(commit=False)
-            address_site.owner = request.user
-            address_site.save()
-            file_site = file_upload_form.save(commit=False)
-            file_site.owner = request.user
-            file_site.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site_form": site_form, "address_form": address_form, "file_upload_form": file_upload_form}
+    context = {"site_form": site_form}
     return render(request, "site_surveys/new_site.html", context)
 
 
@@ -92,22 +82,39 @@ def edit_site(request, site_id):
     if request.method != "POST":
         # No data submitted; create a blank form.
         site_form = SiteForm(instance=site)
-        address_form = AddressForm(instance=site)
-        file_upload_form = FileUploadForm(instance=site)
+
     else:
         # POST data submitted; process data.
         site_form = SiteForm(instance=site, data=request.POST)
-        address_form = AddressForm(instance=site, data=request.POST)
-        file_upload_form = FileUploadForm(instance=site, data=request.POST)
-        if site_form.is_valid() and address_form.is_valid() and file_upload_form.is_valid():
+        if site_form.is_valid():
             site_form.save()
-            address_form.save()
-            file_upload_form.save()
             return redirect("site_surveys:sites")
 
     # Display a blank or invalid form.
-    context = {"site": site, "site_form": site_form, "address_form": address_form, "file_upload_form": file_upload_form}
+    context = {"site": site, "site_form": site_form}
     return render(request, "site_surveys/edit_site.html", context)
+
+
+@login_required
+def photo_checklist(request, site_id):
+    """Edit an existing site."""
+    site = get_object_or_404(Site, id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        photo_form = PhotoForm(instance=site)
+
+    else:
+        # POST data submitted; process data.
+        photo_form = PhotoForm(instance=site, data=request.POST)
+        if photo_form.is_valid():
+            photo_form.save()
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
+
+    # Display a blank or invalid form.
+    context = {"site": site, "photo_form": photo_form}
+    return render(request, "site_surveys/photo_checklist.html", context)
 
 
 @login_required
@@ -117,20 +124,18 @@ def export_all_sites(request):
     export_sites = Site.objects.all()
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "street_address", "city", "state", "zip_code", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"])
 
     for export_site in export_sites:
         my_writer.writerow([
             export_site.title,
-            export_site.text,
+            export_site.first_name,
+            export_site.last_name,
+            export_site.email,
             export_site.street_address,
             export_site.city,
             export_site.state,
             export_site.zip_code,
-            export_site.first_name,
-            export_site.last_name,
-            export_site.email,
-            export_site.age,
             export_site.site_type,
         ])
     return response
@@ -143,19 +148,17 @@ def export_site(request, site_id):
     export_site = get_object_or_404(Site, id=site_id)
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "text", "street_address", "city", "state", "zip_code", "first_name", "last_name", "email", "age", "site_type"])
+    my_writer.writerow(["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"])
 
     my_writer.writerow([
         export_site.title,
-        export_site.text,
+        export_site.first_name,
+        export_site.last_name,
+        export_site.email,
         export_site.street_address,
         export_site.city,
         export_site.state,
         export_site.zip_code,
-        export_site.first_name,
-        export_site.last_name,
-        export_site.email,
-        export_site.age,
         export_site.site_type,
     ])
     return response
