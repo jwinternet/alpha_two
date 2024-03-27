@@ -24,7 +24,7 @@ urlpatterns = [
     path("network_checklist/<int:site_id>/", views.network_checklist, name="network_checklist"),
     path("server_checklist/<int:site_id>/", views.server_checklist, name="server_checklist"),
     path("mdf_checklist/<int:site_id>/", views.mdf_checklist, name="mdf_checklist"),
-    path("idf_checklist/<int:site_id>/", views.photo_checklist, name="idf_checklist"),
+    path("idf_checklist/<int:site_id>/", views.idf_checklist, name="idf_checklist"),
     path('export_all_sites/', views.export_all_sites, name='export_all_sites'),
     path('export_site/<int:site_id>/', views.export_site, name='export_site'),
 ]

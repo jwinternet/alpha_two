@@ -18,7 +18,7 @@ def index(request):
 @login_required
 def sites(request):
     """Show all sites."""
-    sites = Site.objects.order_by("date_added")
+    sites = Site.objects.order_by("title")
     count = sites.count()
 
     # Pagination with 3 posts per page

@@ -144,7 +144,7 @@ class MDFForm(forms.ModelForm):
 
 
 class IDFForm(forms.ModelForm):
-    server_one = forms.CharField(
+    idf = forms.CharField(
         label="IDF: ",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
