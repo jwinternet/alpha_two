@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from csv import writer
 
 from .models import Site
-from .forms import SiteForm, PhotoForm
+from .forms import SiteForm, PhotoForm, NetworkForm, ServerForm, MDFForm, IDFForm
 
 
 def index(request):
@@ -119,6 +119,94 @@ def photo_checklist(request, site_id):
 
 
 @login_required
+def network_checklist(request, site_id):
+    """Edit an existing site."""
+    site = get_object_or_404(Site, id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        network_form = NetworkForm(instance=site)
+
+    else:
+        # POST data submitted; process data.
+        network_form = NetworkForm(instance=site, data=request.POST)
+        if network_form.is_valid():
+            network_form.save()
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
+
+    # Display a blank or invalid form.
+    context = {"site": site, "network_form": network_form}
+    return render(request, "site_surveys/network_checklist.html", context)
+
+
+@login_required
+def server_checklist(request, site_id):
+    """Edit an existing site."""
+    site = get_object_or_404(Site, id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        server_form = ServerForm(instance=site)
+
+    else:
+        # POST data submitted; process data.
+        server_form = ServerForm(instance=site, data=request.POST)
+        if server_form.is_valid():
+            server_form.save()
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
+
+    # Display a blank or invalid form.
+    context = {"site": site, "server_form": server_form}
+    return render(request, "site_surveys/server_checklist.html", context)
+
+
+@login_required
+def mdf_checklist(request, site_id):
+    """Edit an existing site."""
+    site = get_object_or_404(Site, id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        mdf_form = MDFForm(instance=site)
+
+    else:
+        # POST data submitted; process data.
+        mdf_form = MDFForm(instance=site, data=request.POST)
+        if mdf_form.is_valid():
+            mdf_form.save()
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
+
+    # Display a blank or invalid form.
+    context = {"site": site, "mdf_form": mdf_form}
+    return render(request, "site_surveys/mdf_checklist.html", context)
+
+
+@login_required
+def idf_checklist(request, site_id):
+    """Edit an existing site."""
+    site = get_object_or_404(Site, id=site_id)
+
+    if request.method != "POST":
+        # No data submitted; create a blank form.
+        idf_form = IDFForm(instance=site)
+
+    else:
+        # POST data submitted; process data.
+        idf_form = IDFForm(instance=site, data=request.POST)
+        if idf_form.is_valid():
+            idf_form.save()
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
+
+    # Display a blank or invalid form.
+    context = {"site": site, "idf_form": idf_form}
+    return render(request, "site_surveys/idf_checklist.html", context)
+
+
+@login_required
 def export_all_sites(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="export_all_sites.csv"'
@@ -127,7 +215,8 @@ def export_all_sites(request):
     my_writer = writer(response)
     my_writer.writerow([
         "title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type",
-        "front", "back", "left", "right",
+        "front", "back", "left", "right", "router_one", "router_two", "switch_one", "switch_two", "server_one",
+        "server_two", "mdf", "idf",
     ])
 
     for export_site in export_sites:
@@ -145,6 +234,14 @@ def export_all_sites(request):
             export_site.back,
             export_site.left,
             export_site.right,
+            export_site.router_one,
+            export_site.router_two,
+            export_site.switch_one,
+            export_site.switch_two,
+            export_site.server_one,
+            export_site.server_two,
+            export_site.mdf,
+            export_site.idf,
         ])
     return response
 
@@ -158,7 +255,8 @@ def export_site(request, site_id):
     my_writer = writer(response)
     my_writer.writerow([
         "title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type",
-        "front", "back", "left", "right",
+        "front", "back", "left", "right", "router_one", "router_two", "switch_one", "switch_two", "server_one",
+        "server_two", "mdf", "idf",
     ])
     my_writer.writerow([
         export_site.title,
@@ -174,6 +272,14 @@ def export_site(request, site_id):
         export_site.back,
         export_site.left,
         export_site.right,
+        export_site.router_one,
+        export_site.router_two,
+        export_site.switch_one,
+        export_site.switch_two,
+        export_site.server_one,
+        export_site.server_two,
+        export_site.mdf,
+        export_site.idf,
     ])
     return response
 

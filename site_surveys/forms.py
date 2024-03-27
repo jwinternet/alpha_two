@@ -64,24 +64,92 @@ class PhotoForm(forms.ModelForm):
     front = forms.CharField(
         label="Front: ",
         required=False,
-        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     back = forms.CharField(
-        label="Front: ",
+        label="Back: ",
         required=False,
-        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     left = forms.CharField(
-        label="Front: ",
+        label="Left: ",
         required=False,
-        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     right = forms.CharField(
-        label="Front: ",
+        label="Right: ",
         required=False,
-        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
 
     class Meta:
         model = Site
         fields = ["front", "back", "left", "right"]
+
+
+class NetworkForm(forms.ModelForm):
+    router_one = forms.CharField(
+        label="Router One: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+    router_two = forms.CharField(
+        label="Router Two: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+    switch_one = forms.CharField(
+        label="Switch One: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+    switch_two = forms.CharField(
+        label="Switch Two: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+
+    class Meta:
+        model = Site
+        fields = ["router_one", "router_two", "switch_one", "switch_two"]
+
+
+class ServerForm(forms.ModelForm):
+    server_one = forms.CharField(
+        label="Server One: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+    server_two = forms.CharField(
+        label="Server Two: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+
+    class Meta:
+        model = Site
+        fields = ["server_one", "server_two"]
+
+
+class MDFForm(forms.ModelForm):
+    mdf = forms.CharField(
+        label="MDF: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+
+    class Meta:
+        model = Site
+        fields = ["mdf"]
+
+
+class IDFForm(forms.ModelForm):
+    server_one = forms.CharField(
+        label="IDF: ",
+        required=False,
+        widget=forms.Select(choices=Site.YES_NO_CHOICES),
+    )
+
+    class Meta:
+        model = Site
+        fields = ["idf"]

@@ -70,6 +70,82 @@
                 </table>
             </div>
         </div>
+        <div class="container mt-3">
+            <h5>Network Checklist (<a href="{% url 'site_surveys:network_checklist' site.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Router One</th>
+                            <th>Router Two</th>
+                            <th>Switch One</th>
+                            <th>Switch Two</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ site.router_one }}</td>
+                            <td>{{ site.router_two }}</td>
+                            <td>{{ site.switch_one }}</td>
+                            <td>{{ site.switch_two }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h5>Server Checklist (<a href="{% url 'site_surveys:server_checklist' site.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Server One</th>
+                            <th>Server Two</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ site.server_one }}</td>
+                            <td>{{ site.server_two }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h5>MDF Checklist (<a href="{% url 'site_surveys:mdf_checklist' site.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>MDF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ site.mdf }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <h5>IDF Checklist (<a href="{% url 'site_surveys:idf_checklist' site.id %}">edit</a>)</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>IDF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ site.iof }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
         <p>
             <div><a href="{% url 'site_surveys:export_site' site.id %}">
                 <button type="button" class="button">Export Site Data</button></a></div>
