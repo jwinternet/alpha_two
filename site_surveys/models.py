@@ -103,6 +103,7 @@ class Site(models.Model):
     #     upload_to='site_surveys/media/%Y/%m/%d/',
     #     blank=True
     # )
+
     tags = TaggableManager()
 
     class Meta:
