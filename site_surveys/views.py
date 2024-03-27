@@ -19,6 +19,7 @@ def index(request):
 def sites(request):
     """Show all sites."""
     sites = Site.objects.order_by("date_added")
+    count = sites.count()
 
     # Pagination with 3 posts per page
     paginator = Paginator(sites, 10)
@@ -31,7 +32,7 @@ def sites(request):
     except EmptyPage:
         # If page_number is out of range deliver last page of results
         site = paginator.page(paginator.num_pages)
-    context = {"sites": site}
+    context = {"sites": site, "count": count}
     return render(request, "site_surveys/sites.html", context)
 
 
