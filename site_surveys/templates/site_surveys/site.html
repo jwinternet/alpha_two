@@ -11,7 +11,7 @@
 
         <div class="container mt-3">
             <h2>{{ site.title.upper }}</h2>
-            <h5>General Information</h5>
+            <h5>General Information (<a href="{% url 'site_surveys:edit_site' site.id %}">edit</a>)</h5>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
@@ -48,29 +48,31 @@
             </div>
         </div>
         <div class="container mt-3">
-            <h5>Photo Checklist</h5>
+            <h5>Photo Checklist (<a href="{% url 'site_surveys:photo_checklist' site.id %}">edit</a>)</h5>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Front</th>
+                            <th>Back</th>
+                            <th>Left</th>
+                            <th>Right</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>{{ site.front }}</td>
+                            <td>{{ site.back }}</td>
+                            <td>{{ site.left }}</td>
+                            <td>{{ site.right }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <p>
-            <br><a href="{% url 'site_surveys:photo_checklist' site.id %}">Edit Photo Checklist</a>
-        </p>
-        <p>
             <div><a href="{% url 'site_surveys:export_site' site.id %}">
                 <button type="button" class="button">Export Site Data</button></a></div>
-            <br><a href="{% url 'site_surveys:edit_site' site.id %}">Edit Site</a>
         </p>
 
     {% endblock page_header %}

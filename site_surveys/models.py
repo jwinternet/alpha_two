@@ -12,6 +12,7 @@ class Site(models.Model):
     # General Site Information
     title = models.CharField(
         max_length=4,
+        unique=True
     )
     slug = models.SlugField(max_length=250)
     date_added = models.DateField(auto_now_add=True)
@@ -41,6 +42,18 @@ class Site(models.Model):
     ]
     # Photo Information
     front = models.CharField(
+        choices=PHOTO_CHOICES,
+        max_length=4,
+    )
+    back = models.CharField(
+        choices=PHOTO_CHOICES,
+        max_length=4,
+    )
+    left = models.CharField(
+        choices=PHOTO_CHOICES,
+        max_length=4,
+    )
+    right = models.CharField(
         choices=PHOTO_CHOICES,
         max_length=4,
     )

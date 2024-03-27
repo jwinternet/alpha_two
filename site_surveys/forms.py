@@ -66,7 +66,22 @@ class PhotoForm(forms.ModelForm):
         required=False,
         widget=forms.Select(choices=Site.PHOTO_CHOICES),
     )
+    back = forms.CharField(
+        label="Front: ",
+        required=False,
+        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+    )
+    left = forms.CharField(
+        label="Front: ",
+        required=False,
+        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+    )
+    right = forms.CharField(
+        label="Front: ",
+        required=False,
+        widget=forms.Select(choices=Site.PHOTO_CHOICES),
+    )
 
     class Meta:
         model = Site
-        fields = ["front"]
+        fields = ["front", "back", "left", "right"]

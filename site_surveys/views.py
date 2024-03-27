@@ -88,7 +88,8 @@ def edit_site(request, site_id):
         site_form = SiteForm(instance=site, data=request.POST)
         if site_form.is_valid():
             site_form.save()
-            return redirect("site_surveys:sites")
+            context = {"site": site}
+            return render(request, "site_surveys/site.html", context)
 
     # Display a blank or invalid form.
     context = {"site": site, "site_form": site_form}
@@ -124,7 +125,10 @@ def export_all_sites(request):
     export_sites = Site.objects.all()
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"])
+    my_writer.writerow([
+        "title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type",
+        "front", "back", "left", "right",
+    ])
 
     for export_site in export_sites:
         my_writer.writerow([
@@ -137,19 +141,25 @@ def export_all_sites(request):
             export_site.state,
             export_site.zip_code,
             export_site.site_type,
+            export_site.front,
+            export_site.back,
+            export_site.left,
+            export_site.right,
         ])
     return response
 
 
 @login_required
 def export_site(request, site_id):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="export_site.csv"'
     export_site = get_object_or_404(Site, id=site_id)
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="export_site_{export_site.title}.csv"'
 
     my_writer = writer(response)
-    my_writer.writerow(["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"])
-
+    my_writer.writerow([
+        "title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type",
+        "front", "back", "left", "right",
+    ])
     my_writer.writerow([
         export_site.title,
         export_site.first_name,
@@ -160,6 +170,10 @@ def export_site(request, site_id):
         export_site.state,
         export_site.zip_code,
         export_site.site_type,
+        export_site.front,
+        export_site.back,
+        export_site.left,
+        export_site.right,
     ])
     return response
 
