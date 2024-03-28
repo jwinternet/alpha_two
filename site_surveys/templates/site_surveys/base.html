@@ -11,7 +11,7 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4 border" style="background-color: #002FCD;">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 border" style="background-color: #002FCD; margin: -1px">
         <div class="container-fluid" style="text-align: center">
            <a class="navbar-brand" href="{% url 'site_surveys:index' %}">
                 <img src="{% static '/site_surveys/images/pnc_logo_five.png' %}" class="rounded" alt="Missing Image">
@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #3a941f;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Sites</strong></button>
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #1cff51;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Sites</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>Sites</strong></a></li>
                         <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
@@ -34,13 +34,13 @@
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #FF5400;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Useful Links</strong></button>
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #E74C3C;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Useful Links</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:useful_links' %}"><strong>Useful Links</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #c1c418;"data-bs-toggle="dropdown" aria-expanded="false"><strong>Documentation</strong></button>
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #ffff00;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Documentation</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}"><strong>Documentation</strong></a></li>
                     </ul>

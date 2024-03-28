@@ -14,16 +14,17 @@ class Site(models.Model):
         max_length=4,
         unique=True
     )
-    slug = models.SlugField(max_length=250)
+    slug = models.SlugField(max_length=50)
     date_added = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(max_length=100)
     street_address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     STATE = [
+        (None, "State"),
         ("AK", "Alaska"),
         ("AL", "Alabama"),
         ("AR", "Arkansas"),
@@ -83,6 +84,7 @@ class Site(models.Model):
     )
     zip_code = models.CharField(max_length=5)
     SITE_TYPES = [
+        (None, "Site Type"),
         ("Wawa", "Wawa"),
         ("Sheetz", "Sheetz"),
         ("Thorntons", "Thorntons"),
@@ -91,7 +93,7 @@ class Site(models.Model):
     ]
     site_type = models.CharField(
         choices=SITE_TYPES,
-        max_length=100
+        max_length=25
     )
     YES_NO_CHOICES = [
         ("Yes", "Yes"),

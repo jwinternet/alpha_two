@@ -37,14 +37,14 @@ class SiteForm(forms.ModelForm):
     )
     state = forms.CharField(
         label="",
-        widget=forms.Select(choices=Site.STATE),
+        widget=forms.Select(choices=Site.STATE, attrs={'placeholder': 'State', 'style': 'width: 300px;'}),
     )
     zip_code = forms.CharField(
         label="",
         widget=forms.TextInput(attrs={'placeholder': 'ZIP Code', 'style': 'width: 300px;'})
     )
     site_type = forms.CharField(
-        label="Site Type: ",
+        label="",
         required=False,
         widget=forms.Select(choices=Site.SITE_TYPES),
     )
