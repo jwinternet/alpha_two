@@ -37,7 +37,7 @@ class SiteForm(forms.ModelForm):
     )
     state = forms.CharField(
         label="",
-        widget=forms.TextInput(attrs={'placeholder': 'State', 'style': 'width: 300px;'})
+        widget=forms.Select(choices=Site.STATE),
     )
     zip_code = forms.CharField(
         label="",

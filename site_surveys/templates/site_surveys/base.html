@@ -11,11 +11,10 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light mb-4 border" style="background-color: #8a8fa6;">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'site_surveys:index' %}">
-                <img src="{% static '/site_surveys/images/pnc_logo_five.png' %}" alt="Missing Image">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 border" style="background-color: #0d6efd;">
+        <div class="container-fluid" style="text-align: center">
+           <a class="navbar-brand" href="{% url 'site_surveys:index' %}">
+                <img src="{% static '/site_surveys/images/pnc_logo_five.png' %}" class="rounded" alt="Missing Image">
                 <h3> Site Surveys</h3>
             </a>
 
@@ -24,39 +23,41 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{% url 'site_surveys:sites' %}"
-                           role="button" data-bs-toggle="dropdown" aria-expanded="false"><h4>Sites</h4></a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}">Sites</a></li>
-                            <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}">Add New Site</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'site_surveys:useful_links' %}"><h4>Useful Links</h4></a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'site_surveys:documentation' %}"><h4>Documentation</h4></a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'site_surveys:contacts' %}"><h4>Contacts</h4></a>
-                    </li>
-                </ul>
+            <div class="collapse navbar-collapse" id="navbarCollapse" >
+                <div class="btn-group">
+                    <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Sites</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}">Sites</a></li>
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}">Add New Site</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Useful Links</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:useful_links' %}">Useful Links</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Documentation</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-danger btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Contacts</button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:contacts' %}">Contacts</a></li>
+                    </ul>
+                </div>
 
                 <!-- Account-related links -->
                 <ul class="navbar-nav ms-auto mb-2 mb-md-0">
 
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <span class="navbar-text me-2">{{ user.username.title }}</span>
+                        <li class="badge">
+                            <h1><span class="badge text-bg-light">{{ user.username.title }}</span></h1>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -72,7 +73,7 @@
                 {% if user.is_authenticated %}
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
-                        <button name='submit' class='btn btn-outline-secondary btn-sm' data-toggle="tooltip"
+                        <button name='submit' class='btn btn-light btn-outline-info text-dark btn-lg' data-toggle="tooltip"
                                 data-placement="top" title="Click to log out of site.">Log Out</button>
                     </form>
                 {% endif %}
