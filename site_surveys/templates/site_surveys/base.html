@@ -11,7 +11,7 @@
     {% bootstrap_javascript %}
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark mb-4 border" style="background-color: #0d6efd;">
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4 border" style="background-color: #002FCD;">
         <div class="container-fluid" style="text-align: center">
            <a class="navbar-brand" href="{% url 'site_surveys:index' %}">
                 <img src="{% static '/site_surveys/images/pnc_logo_five.png' %}" class="rounded" alt="Missing Image">
@@ -23,9 +23,9 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse" >
-                <div class="btn-group">
-                    <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><strong>Sites</strong></button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="btn-group ms-auto mb-2 mb-md-0">
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #3a941f;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Sites</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>Sites</strong></a></li>
                         <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
@@ -33,23 +33,29 @@
                         <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-warning btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><strong>Useful Links</strong></button>
+                <div class="btn-group ms-auto mb-2 mb-md-0">
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #FF5400;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Useful Links</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:useful_links' %}"><strong>Useful Links</strong></a></li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><strong>Documentation</strong></button>
+                <div class="btn-group ms-auto mb-2 mb-md-0">
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #c1c418;"data-bs-toggle="dropdown" aria-expanded="false"><strong>Documentation</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}"><strong>Documentation</strong></a></li>
                     </ul>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-danger btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><strong>Contacts</strong></button>
+                <div class="btn-group ms-auto mb-2 mb-md-0">
+                    <button type="button" class="btn btn-lg dropdown-toggle" style="background-color: #5f8e99;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Contacts</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:contacts' %}"><strong>Contacts</strong></a></li>
                     </ul>
+                </div>
+                <div class="container-fluid ms-auto mb-2 mb-md-0">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" style="color: black; text-align: center" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" style="color: white" type="submit">Search</button>
+                    </form>
                 </div>
 
                 <!-- Account-related links -->
@@ -57,7 +63,7 @@
 
                     {% if user.is_authenticated %}
                         <li class="badge">
-                            <h1><span class="badge text-bg-light">{{ user.username.title }}</span></h1>
+                            <h2><span class="badge text-bg-light">{{ user.username.title }}</span></h2>
                         </li>
                     {% else %}
                         <li class="nav-item">
@@ -74,7 +80,7 @@
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
                         <button name='submit' class='btn btn-light btn-outline-info text-dark btn-lg' data-toggle="tooltip"
-                                data-placement="top" title="Click to log out of site.">Log Out</button>
+                                data-placement="top" title="Click to log out of site.">Logout</button>
                     </form>
                 {% endif %}
 
