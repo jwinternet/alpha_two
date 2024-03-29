@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.views.generic import ListView
+from django.db.models import Q
 
 from csv import writer
 
@@ -298,3 +300,15 @@ def documentation(request):
 @login_required
 def contacts(request):
     return render(request, "site_surveys/contacts.html")
+
+
+class SearchResultsView(ListView):
+    model = Site
+    template_name = "site_surveys/search_results.html"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q")
+        object_list = Site.objects.filter(
+            Q(title__icontains=query)
+        )
+        return object_list

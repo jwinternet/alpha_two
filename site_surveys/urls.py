@@ -27,4 +27,5 @@ urlpatterns = [
     path("idf_checklist/<int:site_id>/", views.idf_checklist, name="idf_checklist"),
     path('export_all_sites/', views.export_all_sites, name='export_all_sites'),
     path('export_site/<int:site_id>/', views.export_site, name='export_site'),
+    path('search_results/', views.SearchResultsView.as_view(), name='search_results'),
 ]

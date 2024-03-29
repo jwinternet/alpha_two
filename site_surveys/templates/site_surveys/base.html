@@ -52,8 +52,8 @@
                     </ul>
                 </div>
                 <div class="container-fluid ms-auto mb-2 mb-md-0">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" style="color: black; text-align: center" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" role="search" action="{% url 'site_surveys:search_results' %}" method="get">
+                        <input name="q" class="form-control me-2" style="color: black; text-align: center" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" style="color: white" type="submit">Search</button>
                     </form>
                 </div>
