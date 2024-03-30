@@ -14,6 +14,7 @@ urlpatterns = [
     path("useful_links/", views.useful_links, name="useful_links"),
     path("documentation/", views.documentation, name="documentation"),
     path("contacts/", views.contacts, name="contacts"),
+    path("about/", views.about, name="about"),
     # Detail page for a single site.
     path("sites/<int:site_id>/", views.site, name="site"),
     # Page for adding a new site.

@@ -302,6 +302,11 @@ def contacts(request):
     return render(request, "site_surveys/contacts.html")
 
 
+@login_required
+def about(request):
+    return render(request, "site_surveys/about.html")
+
+
 class SearchResultsView(ListView):
     model = Site
     template_name = "site_surveys/search_results.html"

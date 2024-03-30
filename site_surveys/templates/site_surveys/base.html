@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Site Surveys</title>
+
     {% load django_bootstrap5 %}
     {% bootstrap_css %}
     {% bootstrap_javascript %}
@@ -24,22 +25,22 @@
             </button>
             <div class="collapse navbar-collapse gap-2" id="navbarCollapse">
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Sites</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#9728; Sites</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>Sites</strong></a></li>
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>List of Sites</strong></a></li>
                         <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="#">Separated link</a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Useful Links</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.9rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128423; Useful Links</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:useful_links' %}"><strong>Useful Links</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Documentation</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128435; Documentation</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}"><strong>Documentation</strong></a></li>
                     </ul>
@@ -50,9 +51,15 @@
                         <li><a class="dropdown-item" href="{% url 'site_surveys:contacts' %}"><strong>Contacts</strong></a></li>
                     </ul>
                 </div>
-                <div class="container-fluid ms-auto mb-2 mb-md-0">
+                <div class="btn-group ms-auto mb-2 mb-md-0">
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>About</strong></button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'site_surveys:about' %}"><strong>About</strong></a></li>
+                    </ul>
+                </div>
+                <div class="container-fluid ms-auto mb-2 mb-md-0 g-5">
                     <form class="d-flex" role="search" action="{% url 'site_surveys:search_results' %}" method="get">
-                        <input name="q" class="form-control me-2" style="color: black; text-align: center" type="search" placeholder="Search" aria-label="Search">
+                        <input name="q" class="form-control me-2" style="color: black; text-align: left" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
 
@@ -78,7 +85,7 @@
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
                         <button name='submit' class='btn btn-light btn-outline-dark text-dark' data-toggle="tooltip" style="background-color: #FF5400;"
-                                data-placement="top" title="Click to log out of site."><strong>Logout</strong></button>
+                                data-placement="top" title="Click to log out of site."><strong>Logout &#128274;</strong></button>
                     </form>
                 {% endif %}
 
@@ -94,6 +101,9 @@
         <div>
             {% block content %}{% endblock content %}
         </div>
+        <footer>
+            <p class="copyright" style="position: sticky; bottom: 0;">&copy Copyright 2024 jwinternet</p>
+        </footer>
     </main>
 
 </body>
