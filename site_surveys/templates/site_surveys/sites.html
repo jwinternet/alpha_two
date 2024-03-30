@@ -17,8 +17,8 @@
         <ul class="list-group border-bottom pb-2 mb-4">
             {% for site in sites %}
 
-                <li class="list-group-item border-0">
-                    <div class="p-3 mb-3 text-light border rounded-3" style="background-color: #002FCD;">
+                <li class="list-group-item border-1">
+                    <div class="p-2 text-light border rounded-2" style="background-color: #002FCD;">
                         <div class="container text-light">
                             <a href="{% url 'site_surveys:site' site.id %}" style="color: white"><h4>{{ site.title.upper }}</h4></a>
                             <div>Last Updated: {{ site.updated }}</div>
