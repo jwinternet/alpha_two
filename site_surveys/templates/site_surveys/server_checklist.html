@@ -15,10 +15,14 @@
 
         <div class="p-3 mb-4 bg-warning text-body border rounded-3">
             <div class="container py-1">
-                <form action="{% url 'site_surveys:server_checklist' site.id %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {{ server_form.as_div }}
-                    <button name="submit">Add Server Checklist</button>
+                <form action="{% url 'site_surveys:server_checklist' site.id %}" method="post" enctype="multipart/form-data" >
+                    <div class="row row-cols-lg-auto g-3 align-items-center">
+                        {% csrf_token %}
+                        {{ server_form.as_div }}
+                    </div>
+                    <div class="col-12">
+                        <br><button class="align-items-left" name="submit">Add Server Checklist</button>
+                    </div>
                 </form>
             </div>
         </div>
