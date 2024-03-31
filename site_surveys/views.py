@@ -1,7 +1,7 @@
 #!/usr/bin/python3.12
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.generic import ListView
 from django.db.models import Q
@@ -88,7 +88,7 @@ def edit_site(request, site_id):
 
     else:
         # POST data submitted; process data.
-        site_form = SiteForm(instance=site, data=request.POST)
+        site_form = SiteForm(instance=site, data=request.POST, files=request.FILES)
         if site_form.is_valid():
             site_form.save()
             context = {"site": site}
@@ -110,7 +110,7 @@ def photo_checklist(request, site_id):
 
     else:
         # POST data submitted; process data.
-        photo_form = PhotoForm(instance=site, data=request.POST)
+        photo_form = PhotoForm(instance=site, data=request.POST, files=request.FILES)
         if photo_form.is_valid():
             photo_form.save()
             context = {"site": site}
@@ -132,7 +132,7 @@ def network_checklist(request, site_id):
 
     else:
         # POST data submitted; process data.
-        network_form = NetworkForm(instance=site, data=request.POST)
+        network_form = NetworkForm(instance=site, data=request.POST, files=request.FILES)
         if network_form.is_valid():
             network_form.save()
             context = {"site": site}
@@ -154,7 +154,7 @@ def server_checklist(request, site_id):
 
     else:
         # POST data submitted; process data.
-        server_form = ServerForm(instance=site, data=request.POST)
+        server_form = ServerForm(instance=site, data=request.POST, files=request.FILES)
         if server_form.is_valid():
             server_form.save()
             context = {"site": site}
@@ -176,7 +176,7 @@ def mdf_checklist(request, site_id):
 
     else:
         # POST data submitted; process data.
-        mdf_form = MDFForm(instance=site, data=request.POST)
+        mdf_form = MDFForm(instance=site, data=request.POST, files=request.FILES)
         if mdf_form.is_valid():
             mdf_form.save()
             context = {"site": site}
@@ -198,7 +198,7 @@ def idf_checklist(request, site_id):
 
     else:
         # POST data submitted; process data.
-        idf_form = IDFForm(instance=site, data=request.POST)
+        idf_form = IDFForm(instance=site, data=request.POST, files=request.FILES)
         if idf_form.is_valid():
             idf_form.save()
             context = {"site": site}
@@ -285,6 +285,12 @@ def export_site(request, site_id):
         export_site.idf,
     ])
     return response
+
+
+@login_required
+def download_file(request, site_id):
+    site = get_object_or_404(Site, id=site_id)
+    return FileResponse(site.file_upload.open(), as_attachment=True,)
 
 
 @login_required

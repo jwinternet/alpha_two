@@ -148,10 +148,18 @@
                 </table>
             </div>
         </div>
-        <p>
-            <div><a href="{% url 'site_surveys:export_site' site.id %}">
-                <button type="button" class="button">Export Site Data</button></a></div>
-        </p>
+        <div>
+            <a href="{% url 'site_surveys:export_site' site.id %}">
+                <button type="button" class="button">Export Site Data</button>
+            </a>
+        </div>
+        <div>
+            {% if site.file_upload %}
+                <a href="{% url 'site_surveys:download_file' site.id %}">
+                    <button type="button" class="button">Download Attached File</button>
+                </a>
+            {% endif %}
+        </div>
 
     {% endblock page_header %}
 
