@@ -103,58 +103,70 @@ class Site(models.Model):
     # Photo Information
     front = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     back = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     left = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     right = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
 
     # Network Information
     router_one = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     router_two = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     switch_one = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     switch_two = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
 
     # Server Information
     server_one = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
     server_two = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
 
     # MDF Information
     mdf = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
 
     # IDF Information
     idf = models.CharField(
         choices=YES_NO_CHOICES,
+        default="No",
         max_length=4,
     )
 
