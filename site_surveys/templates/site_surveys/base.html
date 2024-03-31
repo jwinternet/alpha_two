@@ -25,7 +25,7 @@
             </button>
             <div class="collapse navbar-collapse gap-2" id="navbarCollapse">
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#9728; Sites</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#127974; Sites</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>List of Sites</strong></a></li>
                         <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
@@ -40,19 +40,19 @@
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128435; Documentation</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128221; Documentation</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}"><strong>Documentation</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>Contacts</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128222; Contacts</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:contacts' %}"><strong>Contacts</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>About</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128187; About</strong></button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{% url 'site_surveys:about' %}"><strong>About</strong></a></li>
                     </ul>
@@ -85,7 +85,7 @@
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
                         <button name='submit' class='btn btn-light btn-outline-dark text-dark' data-toggle="tooltip" style="background-color: #FF5400;"
-                                data-placement="top" title="Click to log out of site."><strong>Logout &#128274;</strong></button>
+                                data-placement="top" title="Click to log out of site."><strong>&#128274; Logout</strong></button>
                     </form>
                 {% endif %}
 
@@ -102,7 +102,7 @@
             {% block content %}{% endblock content %}
         </div>
         <footer>
-            <p class="copyright" style="position: sticky; bottom: 0;">&copy Copyright 2024 jwinternet</p>
+            <p class="copyright border-top" style="position: sticky; bottom: 0;">&copy Copyright 2024 jwinternet</p>
         </footer>
     </main>
 

@@ -18,18 +18,13 @@
                 <p class="lead">Make your own PNC Site Survey, and keep a list of the site surveys you're tracking.
                     Whenever you learn something new about a site, make a note summarizing what you've learned.</p>
                 <a class="btn btn-primary btn-lg mt-1 bg-dark text-white"
-                    href="{% url 'accounts:register' %}">Register &raquo;</a>
+                    href="{% url 'site_surveys:sites' %}">View Full List of Sites &raquo;</a>
             </div>
         </div>
     {% endblock page_header %}
 
     {% block content %}
-        <br>
-        <p>
-            Site Surveys helps you keep track of your sites, for any site you're interested in.
-            <br>
-        </p>
-
+        <br><p>Site Surveys helps you keep track of your sites, for any site you're interested in.<br></p>
     {% endblock content %}
 </body>
 </html>
