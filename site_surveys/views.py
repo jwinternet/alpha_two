@@ -65,7 +65,7 @@ def new_site(request):
         site_form = SiteForm()
     else:
         # POST data submitted; process data.
-        site_form = SiteForm(data=request.POST)
+        site_form = SiteForm(request.POST, request.FILES)
         if site_form.is_valid():
             new_site = site_form.save(commit=False)
             new_site.owner = request.user

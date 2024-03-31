@@ -48,10 +48,14 @@ class SiteForm(forms.ModelForm):
         required=False,
         widget=forms.Select(choices=Site.SITE_TYPES),
     )
+    file_upload = forms.FileField(
+        label="Select",
+        required=False,
+    )
 
     class Meta:
         model = Site
-        fields = ["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type"]
+        fields = ["title", "first_name", "last_name", "email", "street_address", "city", "state", "zip_code", "site_type", "file_upload"]
 
 
 # class FileUploadForm(forms.ModelForm):
@@ -62,22 +66,22 @@ class SiteForm(forms.ModelForm):
 
 class PhotoForm(forms.ModelForm):
     front = forms.CharField(
-        label="Front: ",
+        label="Front",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     back = forms.CharField(
-        label="Back: ",
+        label="Back",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     left = forms.CharField(
-        label="Left: ",
+        label="Left",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     right = forms.CharField(
-        label="Right: ",
+        label="Right",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
@@ -89,22 +93,22 @@ class PhotoForm(forms.ModelForm):
 
 class NetworkForm(forms.ModelForm):
     router_one = forms.CharField(
-        label="Router One: ",
+        label="Router One",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     router_two = forms.CharField(
-        label="Router Two: ",
+        label="Router Two",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     switch_one = forms.CharField(
-        label="Switch One: ",
+        label="Switch One",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     switch_two = forms.CharField(
-        label="Switch Two: ",
+        label="Switch Two",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
@@ -116,12 +120,12 @@ class NetworkForm(forms.ModelForm):
 
 class ServerForm(forms.ModelForm):
     server_one = forms.CharField(
-        label="Server One: ",
+        label="Server One",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
     server_two = forms.CharField(
-        label="Server Two: ",
+        label="Server Two",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
@@ -133,7 +137,7 @@ class ServerForm(forms.ModelForm):
 
 class MDFForm(forms.ModelForm):
     mdf = forms.CharField(
-        label="MDF: ",
+        label="MDF",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )
@@ -145,7 +149,7 @@ class MDFForm(forms.ModelForm):
 
 class IDFForm(forms.ModelForm):
     idf = forms.CharField(
-        label="IDF: ",
+        label="IDF",
         required=False,
         widget=forms.Select(choices=Site.YES_NO_CHOICES),
     )

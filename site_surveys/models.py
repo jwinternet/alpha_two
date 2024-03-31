@@ -158,10 +158,10 @@ class Site(models.Model):
         max_length=4,
     )
 
-    # file_upload = models.FileField(
-    #     upload_to='site_surveys/media/%Y/%m/%d/',
-    #     blank=True
-    # )
+    file_upload = models.FileField(
+        upload_to='site_surveys/media/%Y/%m/%d/',
+        blank=True
+    )
 
     tags = TaggableManager()
 
