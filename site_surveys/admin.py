@@ -6,7 +6,7 @@ from .models import Site
 
 @admin.register(Site)
 class SiteAdmin(admin.ModelAdmin):
-    list_display = ("title", "site_type", "owner")
+    list_display = ("title", "slug", "site_type", "owner")
     list_filter = ["date_added", "owner"]
     search_fields = ["title"]
     prepopulated_fields = {"slug": ("title",)}

@@ -20,7 +20,7 @@
                 <li class="list-group-item border-1">
                     <div class="p-2 text-light border rounded-2" style="background-color: #455eb5;">
                         <div class="container text-light">
-                            <a href="{% url 'site_surveys:site' site.id %}" style="color: white"><h4>{{ site.title.upper }}</h4></a>
+                            <a href="{{ site.get_absolute_url }}" style="color: white"><h4>{{ site.title.upper }}</h4></a>
                             <div>Last Updated: {{ site.updated }}</div>
                             <p class="tags"><strong>Tags: {{ site.tags.all|join:", " }}</strong></p>
                         </div>

@@ -1,0 +1,20 @@
+title,first_name,last_name,email,street_address,city,state,zip_code,site_type,front,back,left,right,router_one,router_two,switch_one,switch_two,server_one,server_two,mdf,idf
+A001,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Sheetz,No,No,No,No,No,No,No,No,No,No,No,No
+A002,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,AT&T,No,No,No,No,No,No,No,No,No,No,No,No
+A003,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,No,No,No,No,No,No,No,No,No,No,No,No
+B436,Jared,Winter,jared.winter@pnc.com,711 Westwood Dr,Gibsonia,IA,15044,Wawa,No,No,No,No,Yes,No,Yes,No,No,Yes,Yes,No
+B462,Jared,Winter,jared.winter@pnc.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,1,1,1,1,1,1,1,1,1,1,1,1
+H717,Jared,Winter,jwinternet@outlook.com,1,1,1,1,Verizon,1,1,1,1,1,1,1,1,1,1,1,1
+I111,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,1,1,1,1,1,1,1,1,1,1,1,1
+L173,Elina,Winter,elinawinter2020@outlook.com,111 Smith Street,Gibsonia,AL,15044,Wawa,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+M173,Jared,Winter,jaredwinter2023@outlook.com,1,1,1,1,Wawa,Yes,Yes,Yes,Yes,1,1,1,1,1,1,1,1
+N523,Timmy,Two-Shoes,timmy2shoes@gmail.com,1,1,1,1,Sheetz,1,1,1,1,1,1,1,1,1,1,1,1
+N767,Jared,Winter,jaredwinter2023@outlook.com,1,1,1,1,Thorntons,1,1,1,1,1,1,1,1,1,1,1,1
+O017,Jared,Winter,jaredwinter2017@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+O547,Tyler,Winter,tylerdude2000@hotmaill.com,1,1,1,1,Sheetz,1,1,1,1,1,1,1,1,1,1,1,1
+O564,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+T666,Jared,Winter,jaredwinter2023@outlook.com,1,711 Westwood Dr,1,1,Sheetz,1,1,1,1,1,1,1,1,1,1,1,1
+U126,Jared,Winter,jaredwinter2023@outlook.com,1,1,1,1,Sheetz,1,1,1,1,1,1,1,1,1,1,1,1
+U653,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,AT&T,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes,Yes
+U823,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Sheetz,No,No,No,No,No,No,No,No,No,No,No,No
+U877,Jared,Winter,jaredwinter2023@outlook.com,711 Westwood Dr,Gibsonia,PA,15044,Wawa,1,1,1,1,1,1,1,1,1,1,1,1

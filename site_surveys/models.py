@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 
 from taggit.managers import TaggableManager
 
@@ -14,7 +15,7 @@ class Site(models.Model):
         max_length=4,
         unique=True
     )
-    slug = models.SlugField(max_length=50)
+    slug = models.SlugField(max_length=250)
     date_added = models.DateField(auto_now_add=True)
     updated = models.DateField(auto_now=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -187,5 +188,11 @@ class Site(models.Model):
     def get_absolute_url(self):
         return reverse(
             "site_surveys:site",
-            args=[self.id]
+            args=[self.slug]
         )
+
+    def save(self, *args, **kwargs):
+        if self.title:
+            self.slug = slugify(self.title)
+
+        super(Site, self).save(*args, **kwargs)

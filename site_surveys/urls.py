@@ -16,7 +16,7 @@ urlpatterns = [
     path("contacts/", views.contacts, name="contacts"),
     path("about/", views.about, name="about"),
     # Detail page for a single site.
-    path("sites/<int:site_id>/", views.site, name="site"),
+    path("sites/<slug:site_id>/", views.site, name="site"),
     # Page for adding a new site.
     path("new_site/", views.new_site, name="new_site"),
     # Page for editing an entry.

@@ -43,7 +43,7 @@ def site(request, site_id):
     """Show a single site and all of its notes."""
     try:
         # site = Site.objects.get(id=site_id)
-        site = get_object_or_404(Site, id=site_id)
+        site = get_object_or_404(Site, slug=site_id)
         # # Make sure the site belongs to the current user.
         # if site.owner != request.user:
         #     raise Http404
