@@ -8,8 +8,7 @@
     {% extends "site_surveys/base.html" %}
 
     {% block page_header %}
-        <h1>Sites</h1>
-        <h4>Current Total: {{ count }}</h4>
+        <h2>Sites</h2><h6>Current Total: {{ count }}</h6>
     {% endblock page_header %}
 
     {% block content %}
@@ -20,9 +19,9 @@
                 <li class="list-group-item border-1">
                     <div class="p-2 text-light border rounded-2" style="background-color: #455eb5;">
                         <div class="container text-light">
-                            <a href="{{ site.get_absolute_url }}" style="color: white"><h4>{{ site.title.upper }}</h4></a>
-                            <div>Last Updated: {{ site.updated }}</div>
-                            <p class="tags"><strong>Tags: {{ site.tags.all|join:", " }}</strong></p>
+                            <a href="{{ site.get_absolute_url }}" style="color: white"><h5>{{ site.title.upper }}</h5></a>
+                            <div style="font-size: small;">Last Updated: {{ site.updated }}</div>
+                            <p class="tags" style="font-size: small;"><strong>Tags: {{ site.tags.all|join:", " }}</strong></p>
                         </div>
                     </div>
                 </li>
@@ -32,7 +31,7 @@
             {% endfor %}
         </ul>
         <div><a href="{% url 'site_surveys:export_all_sites' %}">
-            <button type="button" class="button">Export All Sites Data</button></a></div>
+            <button type="button" class="button">Export All Site Data</button></a></div>
         <br><a href="{% url 'site_surveys:new_site' %}">Add New Site</a>
 
     {% include "site_surveys/pagination.html" with page=sites %}
