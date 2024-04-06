@@ -24,41 +24,41 @@
             </button>
             <div class="collapse navbar-collapse gap-2" id="navbarCollapse">
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#127974; Sites</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="font-size: small; background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#127974; Sites</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:sites' %}"><strong>List of Sites</strong></a></li>
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:sites' %}"><strong>List of Sites</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:new_site' %}"><strong>Add New Site</strong></a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="#">Separated link</a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.9rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128423; Useful Links</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="font-size: small; background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.2rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128423; Links</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:useful_links' %}"><strong>Useful Links</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:useful_links' %}"><strong>Links</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128221; Documentation</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="font-size: small; background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1.2rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128221; Docs</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:documentation' %}"><strong>Documentation</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:documentation' %}"><strong>Docs</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.5rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128222; Contacts</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="font-size: small; background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 0.6rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128222; Contacts</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:contacts' %}"><strong>Contacts</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:contacts' %}"><strong>Contacts</strong></a></li>
                     </ul>
                 </div>
                 <div class="btn-group ms-auto mb-2 mb-md-0">
-                    <button type="button" class="btn dropdown-toggle" style="background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 3.1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128187; About</strong></button>
+                    <button type="button" class="btn dropdown-toggle" style="font-size: small; background-color: #d5dff5; --bs-btn-padding-y: .25rem; --bs-btn-padding-x: 1rem;" data-bs-toggle="dropdown" aria-expanded="false"><strong>&#128187; About</strong></button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{% url 'site_surveys:about' %}"><strong>About</strong></a></li>
+                        <li><a class="dropdown-item" style="font-size: small" href="{% url 'site_surveys:about' %}"><strong>About</strong></a></li>
                     </ul>
                 </div>
                 <div class="container-fluid ms-auto mb-2 mb-md-0 g-5">
                     <form class="d-flex" role="search" action="{% url 'site_surveys:search_results' %}" method="get">
-                        <input name="q" class="form-control me-2" style="color: black; text-align: left" type="search" placeholder="Search" aria-label="Search">
+                        <input name="q" class="form-control me-2" style="font-size: small; color: black; text-align: left" type="search" placeholder="Search" aria-label="Search">
                     </form>
                 </div>
 
@@ -67,14 +67,14 @@
 
                     {% if user.is_authenticated %}
                         <li class="badge">
-                            <h4><span class="badge text-bg-light">{{ user.username.title }}</span></h4>
+                            <h4><span class="badge text-bg-light" style="font-size: small">{{ user.username.title }}</span></h4>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:register' %}"><h4>Register</h4></a>
+                            <a class="nav-link" style="font-size: small" href="{% url 'accounts:register' %}"><h4>Register</h4></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}"><h4>Log In</h4></a>
+                            <a class="nav-link" style="font-size: small" href="{% url 'accounts:login' %}"><h4>Log In</h4></a>
                         </li>
                     {% endif %}
 
@@ -83,7 +83,7 @@
                 {% if user.is_authenticated %}
                     <form action="{% url 'accounts:logout' %}" method='post'>
                         {% csrf_token %}
-                        <button name='submit' class='btn btn-light btn-outline-dark text-dark' data-toggle="tooltip" style="background-color: #FF5400;"
+                        <button name='submit' class='btn btn-light btn-outline-dark text-dark' data-toggle="tooltip" style="font-size: small; background-color: #FF5400;"
                                 data-placement="top" title="Click to log out of site."><strong>&#128274; Logout</strong></button>
                     </form>
                 {% endif %}
